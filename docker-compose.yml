@@ -4,7 +4,7 @@ services:
     build: ./jenkins_controller
     container_name: jenkins
     volumes:
-      - ./jenkins_controller/jenkins.yml :/usr/share/jenkins/ref/jenkins.yml
+      - ./jenkins_controller/jenkins.yml:/usr/share/jenkins/ref/jenkins.yml
     ports:
       - "8880:8080"
       - "50000:50000"
