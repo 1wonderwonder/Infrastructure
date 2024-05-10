@@ -1,7 +1,7 @@
 version: '2.4'
 services:
   jenkins:
-    build: docker-compose.yml
+    build: ./jenkins_controller
     container_name: jenkins
     volumes:
       - ./jenkins_controller/jenkins.yml :/usr/share/jenkins/ref/jenkins.yml
