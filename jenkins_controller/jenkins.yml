@@ -1,18 +1,14 @@
-version: '2.4'
-services:
-  jenkins:
-    build: .
-    container_name: jenkins
-    ports:
-      - "8880:8080"
-      - "50000:50000"
-    restart: always
+jenkins:
+  securityRealm:
+    local:
+      users:
+       - id: "panda"
+         password: "panda"
+  authorizationStrategy:
+    globalMatrix:
+      permissions:
+        - "Overall/Administer:panda"
 
-  sonarqube:
-    depends_on:
-      - jenkins
-    image: sonarqube:10.2.1-community
-    container_name: sonarqube
-    ports:
-      - "9000:9000"
-    restart: always
+unclassified:
+  location:
+    url: "http://192.168.44.44:8880/"
