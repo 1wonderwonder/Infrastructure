@@ -1,16 +1,11 @@
-pipelineJob('app_of_apps') {
-    parameters {
-        stringParam('backendDockerTag', '', 'Backend docker image tag')
-        stringParam('frontendDockerTag', '', 'Frontend docker image tag')
-    }
- 
+pipelineJob('backend') {
     definition {
         cpsScm {
             scm {
                 git {
                     remote {
                         credentials("")
-                        url("https://github.com/1wonderwonder/App_of_apps.git")
+                        url("https://github.com/1wonderwonder/Backend.git")
                     }
                     branches('main')
                     scriptPath('Jenkinsfile')
