@@ -35,6 +35,29 @@ services:
       - "9000:9000"
     restart: always
 
+  selenium_hub:
+    depends_on:
+      - jenkins
+    image: selenium/hub
+    container_name: selenium_hub
+    ports:
+    - "4442:4442"
+    - "4443:4443"
+    - "4444:4444"
+    restart: always
+    
+  service_selenium:
+    depends_on:
+      - selenium_hub
+    image: selenium/node-firefox
+    container_name: firefox
+    environment:
+    - SE_EVENT_BUS_HOST=selenium_hub
+    - SE_EVENT_BUS_PUBLISH_PORT=4442
+    - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    restart: always
+
+
   # artifactory:
   #     image: docker.bintray.io/jfrog/artifactory-jcr:7.39.4
   #     container_name: artifactory
@@ -50,3 +73,4 @@ services:
   #         interval: 5s
   #         timeout: 10s
   #         retries: 30
+

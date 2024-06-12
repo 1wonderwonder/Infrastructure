@@ -10,19 +10,19 @@ jenkins:
         - "Overall/Administer:panda"
   numExecutors: 0
 
-nodes:
-- permanent:
-    labelString: "agent"
-    launcher:
-      ssh:
-        credentialsId: "jenkins_agent"
-        host: "192.168.44.44"
-        port: 2222
-        sshHostKeyVerificationStrategy: "nonVerifyingKeyVerificationStrategy"
-    mode: EXCLUSIVE
-    name: "jenkins_agent"
-    remoteFS: "/home/jenkins/agent"
-    retentionStrategy: "always"
+  nodes:
+  - permanent:
+      labelString: "agent"
+      launcher:
+        ssh:
+          credentialsId: "jenkins_agent"
+          host: "192.168.44.44"
+          port: 2222
+          sshHostKeyVerificationStrategy: "nonVerifyingKeyVerificationStrategy"
+      mode: EXCLUSIVE
+      name: "jenkins_agent"
+      remoteFS: "/home/jenkins/agent"
+      retentionStrategy: "always"
 
 credentials:
   system:
